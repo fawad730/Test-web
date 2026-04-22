@@ -1,93 +1,154 @@
+/* ============================================
+   VitaCure — Script
+   Hero entrance, scroll reveals, counter animation
+   ============================================ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Register GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
 
     /* --- STICKY HEADER --- */
     const header = document.getElementById('main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
-    });
+    const handleScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
-    /* --- ANIMATION 1: FADE UP + BLUR REVEAL --- */
-    const fadeUpElements = document.querySelectorAll('.fade-up-blur');
-    
-    fadeUpElements.forEach((el) => {
-        gsap.to(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: "top 85%", // Starts animation when element is 85% from top of viewport
-                toggleActions: "play none none none"
-            },
-            opacity: 1,
-            filter: "blur(0px)",
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            delay: el.dataset.delay || 0
-        });
-    });
-
-    /* --- ANIMATION 2: Removed floating animations (hero uses static blended background now) --- */
 
     /* --- ACTIVE NAV LINK HIGHLIGHT --- */
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
+    const highlightNav = () => {
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= (sectionTop - 200)) {
+            if (window.scrollY >= section.offsetTop - 200) {
                 current = section.getAttribute('id');
             }
         });
-
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
+            }
+        });
+    };
+    window.addEventListener('scroll', highlightNav, { passive: true });
+
+
+    /* --- SCROLL-TRIGGERED REVEAL ANIMATIONS --- */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+
+    /* --- ANIMATED STAT COUNTERS --- */
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    let countersAnimated = false;
+
+    const animateCounters = () => {
+        if (countersAnimated) return;
+        countersAnimated = true;
+
+        counters.forEach(counter => {
+            const target = parseFloat(counter.dataset.count);
+            const isDecimal = counter.dataset.decimal === 'true';
+            const duration = 2000;
+            const startTime = performance.now();
+
+            const update = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = eased * target;
+
+                if (isDecimal) {
+                    counter.textContent = current.toFixed(1);
+                } else if (target >= 1000) {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                } else {
+                    counter.textContent = Math.floor(current);
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            };
+            requestAnimationFrame(update);
+        });
+    };
+
+    // Trigger counters when trust section is in view
+    const trustSection = document.getElementById('trust');
+    if (trustSection) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        counterObserver.observe(trustSection);
+    }
+
+
+    /* --- SMOOTH SCROLL FOR ANCHOR LINKS --- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                const headerHeight = header.offsetHeight;
+                window.scrollTo({
+                    top: target.offsetTop - headerHeight - 20,
+                    behavior: 'smooth'
+                });
             }
         });
     });
 
-    /* --- FORM SUBMISSION PREVENT --- */
-    const form = document.querySelector('.appointment-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you! Your appointment request has been received. Our team will contact you soon.');
-            form.reset();
+
+    /* --- MOBILE MENU TOGGLE --- */
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            mobileToggle.classList.toggle('active');
         });
     }
 
-    /* --- HERO REVEAL SEQUENCE (Immediate on Load) --- */
-    const heroElements = document.querySelectorAll('.hero-card .fade-up-blur');
-    gsap.set(heroElements, { opacity: 0, y: 30, filter: "blur(10px)" });
-    
-    gsap.to(heroElements, {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        duration: 1.5,
-        stagger: 0.2,
-        ease: "power4.out"
-    });
 
-    /* --- TEETH IMAGE SUBTLE ENTRANCE --- */
-    const teethImg = document.querySelector('.hero-teeth-img');
-    if (teethImg) {
-        gsap.from(teethImg, {
-            opacity: 0,
-            scale: 0.9,
-            y: 40,
-            duration: 1.8,
-            ease: "power3.out",
-            delay: 0.4
+    /* --- FORM SUBMISSION --- */
+    const form = document.getElementById('booking-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"] span');
+            const originalText = btn.textContent;
+            btn.textContent = 'Appointment Confirmed ✓';
+            form.reset();
+            setTimeout(() => { btn.textContent = originalText; }, 3000);
         });
+    }
+
+
+    /* --- PARALLAX HERO BACKGROUND --- */
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+                heroBg.style.transform = `scale(${1.05 + scrolled * 0.0001}) translateY(${scrolled * 0.15}px)`;
+            }
+        }, { passive: true });
     }
 });

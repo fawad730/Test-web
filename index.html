@@ -3,390 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitaCure — Premium Expert Dental Care</title>
-    <meta name="description" content="Empowering wellness through expert dental care. Book an appointment with VitaCure today for professional, premium dental services.">
+    <title>VitaCure — Premium Cosmetic & General Dentistry</title>
+    <meta name="description" content="Your smile, perfected. VitaCure delivers luxury cosmetic and general dentistry trusted by 3,000+ patients. Book your free consultation today.">
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Cormorant Garamond (Display) + DM Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
     <!-- NAVBAR -->
     <header id="main-header">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+            <a href="#" class="logo" id="logo">
+                <div class="logo-mark">V</div>
                 VitaCure
             </a>
-            <nav class="nav-menu">
+            <nav class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About Us</a>
                 <a href="#services" class="nav-link">Services</a>
-                <a href="#blog" class="nav-link">Articles</a>
-                <a href="#" class="nav-link">Pages <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#appointment" class="nav-link">Contact</a>
             </nav>
-            <div class="nav-cta">
-                <a href="#appointment" class="btn btn-dark">
-                    Book an Appointment
-                    <div class="btn-icon"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="nav-right">
+                <a href="tel:+12345678910" class="nav-phone" id="nav-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>(234) 567-8910</span>
                 </a>
+                <a href="#appointment" class="btn btn-accent" id="nav-cta">
+                    Book Appointment
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- FLOATING CTA -->
-    <div class="floating-cta-right">
-        <a href="#appointment" class="btn btn-primary" style="padding: 18px 24px; border-radius: 20px; box-shadow: 0 10px 30px rgba(74, 174, 155, 0.4);">
-            <i class="fa-solid fa-calendar-check" style="font-size: 1.5rem;"></i>
-        </a>
-    </div>
-
     <main>
-        <!-- HERO SECTION -->
-        <section id="home" class="hero-wrapper">
-            <div class="container">
-                <div class="hero-card">
-                    <!-- Dark gradient overlay -->
-                    <div class="hero-overlay" aria-hidden="true"></div>
+        <!-- ============================================ -->
+        <!-- HERO SECTION                                 -->
+        <!-- ============================================ -->
+        <section id="home" class="hero">
+            <!-- Background image layer -->
+            <!-- Replace with clinic's actual photography -->
+            <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1800&auto=format&fit=crop');"></div>
+            <!-- Overlay for depth and readability -->
+            <div class="hero-overlay" aria-hidden="true"></div>
 
-                    <!-- Left: Text Content -->
-                    <div class="hero-content">
-                        <h1 class="fade-up-blur">Empowering Wellness Through — Expert Care</h1>
-                        <p class="fade-up-blur">Medical provides comprehensive dental care services for the whole family. Our experienced team uses the latest technology to ensure comfortable, effective treatment.</p>
-                        <div class="hero-actions fade-up-blur">
-                            <a href="#appointment" class="btn btn-hero-cta" id="hero-cta-btn">
-                                <span class="btn-label">Book an Appointment</span>
-                                <span class="btn-arrow-track">
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </span>
+            <!-- Floating ambient particles -->
+            <div class="hero-particles" aria-hidden="true">
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+                <div class="particle particle-5"></div>
+            </div>
+
+            <!-- Hero content -->
+            <div class="hero-content">
+                <span class="hero-badge" id="hero-badge">
+                    <span class="badge-dot"></span>
+                    ⭐ 4.9 Rating · 3,000+ Happy Patients
+                </span>
+
+                <h1 class="hero-title" id="hero-title">
+                    Your smile,<br><em>perfected.</em>
+                </h1>
+
+                <p class="hero-sub" id="hero-sub">
+                    Over 15 years of exceptional cosmetic & general dentistry.<br>
+                    Trusted by thousands in New York for implants, veneers & Invisalign.
+                </p>
+
+                <div class="hero-ctas" id="hero-ctas">
+                    <a href="#appointment" class="btn btn-accent btn-lg" id="hero-cta-primary">
+                        <span>Book Free Consultation</span>
+                        <div class="btn-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                    <a href="#services" class="btn btn-ghost btn-lg" id="hero-cta-secondary">
+                        <span>Our Services</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <!-- Inline trust signals -->
+                <div class="hero-trust" id="hero-trust">
+                    <div class="trust-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>ADA Certified</span>
+                    </div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Same-Day Appointments</span>
+                    </div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Insurance Accepted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SERVICES SECTION                             -->
+        <!-- ============================================ -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">What We Offer</span>
+                    <h2 class="section-title">Tailored dental care,<br><em>for every need.</em></h2>
+                    <p class="section-desc">From routine checkups to life-changing cosmetic transformations — every treatment is delivered with precision, care, and the latest technology.</p>
+                </div>
+
+                <!-- Bento Grid Services Layout -->
+                <div class="services-bento">
+                    <!-- Featured large card -->
+                    <div class="service-card service-card--featured reveal" id="service-implants">
+                        <!-- Replace with clinic's actual photography -->
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1200&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">01</span>
+                            <h3>Dental Implants</h3>
+                            <p>Premium titanium implants that look, feel, and function exactly like your natural teeth. Permanent results with a 98% success rate.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Right: 3D Teeth Model -->
-                    <div class="hero-model">
-                        <img src="hero-3d-teeth.png" alt="3D Dental Model" class="hero-teeth-img">
-                        <!-- Second CTA floating over image -->
-                        <a href="#appointment" class="btn btn-hero-cta hero-cta-secondary" id="hero-cta-secondary">
-                            <span class="btn-label">Get Started</span>
-                            <span class="btn-arrow-track">
+                    <!-- Standard card -->
+                    <div class="service-card reveal" id="service-veneers">
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">02</span>
+                            <h3>Porcelain Veneers</h3>
+                            <p>Custom-crafted shells that transform your smile in just two visits.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Standard card -->
+                    <div class="service-card reveal" id="service-whitening">
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">03</span>
+                            <h3>Teeth Whitening</h3>
+                            <p>Professional in-office whitening up to 8 shades brighter in one session.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Standard card -->
+                    <div class="service-card reveal" id="service-invisalign">
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">04</span>
+                            <h3>Invisalign</h3>
+                            <p>Clear aligners that straighten your teeth discreetly and comfortably.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Featured large card -->
+                    <div class="service-card service-card--featured reveal" id="service-cosmetic">
+                        <!-- Replace with clinic's actual photography -->
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1200&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">05</span>
+                            <h3>Complete Smile Makeover</h3>
+                            <p>A comprehensive plan combining veneers, whitening, and contouring to design the smile you've always envisioned. Your transformation starts here.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Standard card -->
+                    <div class="service-card reveal" id="service-general">
+                        <div class="service-card__image" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&auto=format&fit=crop');"></div>
+                        <div class="service-card__overlay"></div>
+                        <div class="service-card__content">
+                            <span class="service-card__number">06</span>
+                            <h3>Preventive Care</h3>
+                            <p>Routine exams, cleanings, and digital X-rays to keep your oral health flawless.</p>
+                            <a href="#appointment" class="service-card__link">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TRUST STATS / WHY CHOOSE US                  -->
+        <!-- ============================================ -->
+        <section id="trust" class="trust-section">
+            <div class="container">
+                <div class="trust-card">
+                    <div class="trust-header reveal">
+                        <span class="section-label section-label--light">Why VitaCure</span>
+                        <h2 class="section-title section-title--light">Numbers that speak<br><em>louder than words.</em></h2>
+                    </div>
+
+                    <div class="trust-stats">
+                        <div class="stat-item reveal" id="stat-years">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-suffix">+</span>
+                            <p class="stat-label">Years of<br>Excellence</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item reveal" id="stat-patients">
+                            <span class="stat-number" data-count="3000">0</span>
+                            <span class="stat-suffix">+</span>
+                            <p class="stat-label">Patients<br>Treated</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item reveal" id="stat-rating">
+                            <span class="stat-number" data-count="4.9" data-decimal="true">0</span>
+                            <span class="stat-suffix">⭐</span>
+                            <p class="stat-label">Google<br>Rating</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item reveal" id="stat-success">
+                            <span class="stat-number" data-count="98">0</span>
+                            <span class="stat-suffix">%</span>
+                            <p class="stat-label">Implant<br>Success Rate</p>
+                        </div>
+                    </div>
+
+                    <div class="trust-features">
+                        <div class="trust-feature reveal" id="feature-tech">
+                            <div class="trust-feature__icon">
+                                <i class="fa-solid fa-microscope"></i>
+                            </div>
+                            <div>
+                                <h4>Advanced Technology</h4>
+                                <p>3D imaging, digital scanners, and laser dentistry for precision care.</p>
+                            </div>
+                        </div>
+                        <div class="trust-feature reveal" id="feature-comfort">
+                            <div class="trust-feature__icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div>
+                                <h4>Pain-Free Promise</h4>
+                                <p>Advanced sedation options and gentle techniques — anxiety-free visits.</p>
+                            </div>
+                        </div>
+                        <div class="trust-feature reveal" id="feature-emergency">
+                            <div class="trust-feature__icon">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4>Same-Day Emergency</h4>
+                                <p>Urgent dental needs? We offer priority same-day appointments.</p>
+                            </div>
+                        </div>
+                        <div class="trust-feature reveal" id="feature-insurance">
+                            <div class="trust-feature__icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4>All Insurance Accepted</h4>
+                                <p>We work with all major insurance providers. Flexible payment plans available.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- MEET THE DOCTOR                              -->
+        <!-- ============================================ -->
+        <section id="about" class="doctor-section">
+            <div class="container">
+                <div class="doctor-grid">
+                    <div class="doctor-image-wrapper reveal-left">
+                        <div class="doctor-image">
+                            <img src="doctor.png" alt="Dr. Julian Reed — Lead Dentist at VitaCure">
+                        </div>
+                        <div class="doctor-experience-badge">
+                            <span class="experience-number">15+</span>
+                            <span class="experience-text">Years of<br>Practice</span>
+                        </div>
+                    </div>
+                    <div class="doctor-content">
+                        <span class="section-label reveal">Meet Your Dentist</span>
+                        <h2 class="section-title reveal">Dr. Julian Reed,<br><em>DDS, FICOI</em></h2>
+                        <p class="doctor-bio reveal">With over 15 years of experience in cosmetic and implant dentistry, Dr. Reed has transformed thousands of smiles across New York. A Fellow of the International Congress of Oral Implantologists, he combines artistry with clinical precision to deliver results that patients love.</p>
+                        <div class="doctor-credentials reveal">
+                            <div class="credential">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>Columbia University — College of Dental Medicine</span>
+                            </div>
+                            <div class="credential">
+                                <i class="fa-solid fa-award"></i>
+                                <span>Fellow, International Congress of Oral Implantologists</span>
+                            </div>
+                            <div class="credential">
+                                <i class="fa-solid fa-certificate"></i>
+                                <span>American Dental Association — Active Member</span>
+                            </div>
+                        </div>
+                        <div class="reveal">
+                            <a href="#appointment" class="btn btn-dark btn-lg" id="doctor-cta">
+                                <span>Book with Dr. Reed</span>
+                                <div class="btn-arrow" style="background: rgba(255,255,255,0.15);">
+                                    <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TESTIMONIALS                                 -->
+        <!-- ============================================ -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Patient Stories</span>
+                    <h2 class="section-title">Hear it from those<br><em>who smile wider.</em></h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card testimonial-card--highlight reveal" id="testimonial-1">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>"VitaCure completely changed my relationship with the dentist. Dr. Reed's team made my implant procedure feel effortless. I'm smiling with confidence for the first time in years."</blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>ET</span>
+                            </div>
+                            <div>
+                                <h4>Emily Thompson</h4>
+                                <p>Dental Implant Patient</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal" id="testimonial-2">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>"My veneers look so natural that even my friends can't tell. The attention to detail here is incredible. Worth every penny."</blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>RV</span>
+                            </div>
+                            <div>
+                                <h4>Robert Vance</h4>
+                                <p>Veneer Transformation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal" id="testimonial-3">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>"As someone terrified of dentists, I never thought I'd say this — I actually look forward to my visits. The team is so warm and patient."</blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>SM</span>
+                            </div>
+                            <div>
+                                <h4>Sarah Mitchell</h4>
+                                <p>Regular Patient since 2021</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal" id="testimonial-4">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>"Got my Invisalign done here and the results exceeded my expectations. The whole process was smooth and the staff kept me informed every step of the way."</blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>JK</span>
+                            </div>
+                            <div>
+                                <h4>James Kim</h4>
+                                <p>Invisalign Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BEFORE & AFTER GALLERY                       -->
+        <!-- ============================================ -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Transformations</span>
+                    <h2 class="section-title">Results that<br><em>speak for themselves.</em></h2>
+                    <p class="section-desc">Real patients. Real results. Every smile makeover is custom-designed for the individual.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal" id="gallery-1">
+                        <div class="gallery-before">
+                            <img src="hero-teeth.png" alt="Before dental treatment">
+                            <span class="gallery-label">Before</span>
+                        </div>
+                        <div class="gallery-after">
+                            <img src="hero-3d-teeth.png" alt="After dental treatment">
+                            <span class="gallery-label">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h4>Complete Veneer Transformation</h4>
+                            <p>8 porcelain veneers · 2 visits</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item reveal" id="gallery-2">
+                        <div class="gallery-before">
+                            <img src="hero-teeth.png" alt="Before dental treatment" style="filter: brightness(0.9) hue-rotate(10deg);">
+                            <span class="gallery-label">Before</span>
+                        </div>
+                        <div class="gallery-after">
+                            <img src="hero-3d-teeth.png" alt="After dental treatment" style="filter: brightness(1.05);">
+                            <span class="gallery-label">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h4>Invisalign + Whitening</h4>
+                            <p>12-month treatment plan</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item reveal" id="gallery-3">
+                        <div class="gallery-before">
+                            <img src="hero-teeth.png" alt="Before dental treatment" style="filter: brightness(0.85) contrast(1.1);">
+                            <span class="gallery-label">Before</span>
+                        </div>
+                        <div class="gallery-after">
+                            <img src="hero-3d-teeth.png" alt="After dental treatment" style="filter: saturate(1.1);">
+                            <span class="gallery-label">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h4>Full Implant Restoration</h4>
+                            <p>4 implants · Full arch</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BOOK APPOINTMENT / CTA                       -->
+        <!-- ============================================ -->
+        <section id="appointment" class="booking-section">
+            <div class="container">
+                <div class="booking-card">
+                    <!-- Left: Info + Hours -->
+                    <div class="booking-info reveal-left">
+                        <span class="section-label section-label--light">Book a Visit</span>
+                        <h2 class="section-title section-title--light">Ready to transform<br><em>your smile?</em></h2>
+                        <p class="booking-reassurance">No commitment. Free consultation available.<br>We'll find the perfect time for you.</p>
+
+                        <div class="booking-contact">
+                            <div class="booking-contact__item">
+                                <div class="booking-contact__icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="booking-contact__label">Call Us Directly</span>
+                                    <a href="tel:+12345678910" class="booking-contact__value">+1 (234) 567-8910</a>
+                                </div>
+                            </div>
+                            <div class="booking-contact__item">
+                                <div class="booking-contact__icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="booking-contact__label">Visit Our Clinic</span>
+                                    <span class="booking-contact__value">123 Dental Way, New York, NY 10001</span>
+                                </div>
+                            </div>
+                            <div class="booking-contact__item">
+                                <div class="booking-contact__icon">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <span class="booking-contact__label">Working Hours</span>
+                                    <span class="booking-contact__value">Mon–Fri: 8am–7pm · Sat: 9am–3pm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <form class="booking-form reveal" id="booking-form">
+                        <h3>Request an Appointment</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patient-name">Full Name</label>
+                                <input type="text" id="patient-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-phone">Phone Number</label>
+                                <input type="tel" id="patient-phone" placeholder="+1 (000) 000-0000" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patient-service">Service</label>
+                                <select id="patient-service" required>
+                                    <option value="" disabled selected>Choose a service</option>
+                                    <option>General Checkup</option>
+                                    <option>Dental Implants</option>
+                                    <option>Porcelain Veneers</option>
+                                    <option>Teeth Whitening</option>
+                                    <option>Invisalign</option>
+                                    <option>Smile Makeover</option>
+                                    <option>Emergency Visit</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-date">Preferred Date</label>
+                                <input type="date" id="patient-date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-message">Additional Notes <span style="color: var(--color-text-muted); font-weight: 400;">(optional)</span></label>
+                            <textarea id="patient-message" rows="3" placeholder="Any specific concerns or preferences..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent btn-lg" id="booking-submit" style="width: 100%; justify-content: center;">
+                            <span>Confirm Appointment</span>
+                            <div class="btn-arrow">
                                 <i class="fa-solid fa-arrow-right"></i>
-                            </span>
-                        </a>
-                    </div>
-
-                    <!-- Bottom: Scrolling Specialty Tags -->
-                    <div class="hero-tags-strip">
-                        <div class="hero-tags-track">
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Gynecologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Dermatologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Neurologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Cardiologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Orthodontist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Urologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Dentist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Surgeon</span>
-                            <!-- Duplicate for seamless loop -->
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Gynecologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Dermatologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Neurologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Cardiologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Orthodontist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Urologist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Dentist</span>
-                            <span class="hero-specialty-tag"><i class="fa-solid fa-check-circle"></i> Surgeon</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT US -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-image fade-up-blur">
-                        <img src="doctor.png" alt="Our Lead Dentist">
-                    </div>
-                    <div class="about-content">
-                        <span class="section-tag fade-up-blur">// About us</span>
-                        <h2 class="fade-up-blur">VitaCure — Experts transforming healthcare communication.</h2>
-                        <p class="fade-up-blur">We provide full-service medical care, making healthcare simple and accessible with tailored solutions for patients and families. Our clinical excellence is matched only by our dedication to patient comfort.</p>
-                        <div class="fade-up-blur">
-                            <a href="#appointment" class="btn btn-dark">
-                                Book an appointment
-                                <div class="btn-icon"><i class="fa-solid fa-arrow-right"></i></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICES -->
-        <section id="services" class="services">
-            <div class="container">
-                <div class="services-header">
-                    <span class="section-tag">// Our Services</span>
-                    <h2 class="fade-up-blur">Specialized Dental Solutions</h2>
-                </div>
-                <div class="services-grid">
-                    <!-- Service 1 -->
-                    <div class="service-card fade-up-blur">
-                        <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
-                        <h3>General Dentistry</h3>
-                        <p>Routine checkups, cleanings, and fillings to keep your oral health at its absolute best.</p>
-                    </div>
-                    <!-- Service 2 -->
-                    <div class="service-card fade-up-blur">
-                        <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
-                        <h3>Dental Implants</h3>
-                        <p>Premium titanium implants that look and feel just like your natural teeth.</p>
-                    </div>
-                    <!-- Service 3 -->
-                    <div class="service-card fade-up-blur">
-                        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                        <h3>Cosmetic Dentistry</h3>
-                        <p>Teeth whitening and veneers to give you the brilliant smile you've always dreamed of.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHY CHOOSE US -->
-        <section class="why-choose-us">
-            <div class="container">
-                <div class="why-container">
-                    <h2 class="fade-up-blur">Why Patients Trust VitaCure</h2>
-                    <div class="features-grid">
-                        <div class="feature-item fade-up-blur">
-                            <div class="feature-icon"><i class="fa-solid fa-microscope"></i></div>
-                            <h4>Modern Tech</h4>
-                            <p>Using the latest 3D imaging for ultra-precise diagnostics.</p>
-                        </div>
-                        <div class="feature-item fade-up-blur">
-                            <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
-                            <h4>Quick Service</h4>
-                            <p>Same-day appointments and efficient treatment plans.</p>
-                        </div>
-                        <div class="feature-item fade-up-blur">
-                            <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                            <h4>Pain-Free</h4>
-                            <p>Advanced sedation and gentle techniques for anxiety-free care.</p>
-                        </div>
-                        <div class="feature-item fade-up-blur">
-                            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                            <h4>Certified Care</h4>
-                            <p>All our specialists are board-certified and highly experienced.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DOCTORS -->
-        <section id="team" class="doctors">
-            <div class="container">
-                <div class="services-header">
-                    <span class="section-tag">// Expert Team</span>
-                    <h2 class="fade-up-blur">Meet Our Specialists</h2>
-                </div>
-                <div class="doctors-grid">
-                    <div class="doctor-card fade-up-blur">
-                        <div class="doctor-img">
-                            <img src="doctor.png" alt="Dr. Julian Reed">
-                        </div>
-                        <div class="doctor-info">
-                            <p>Lead Dentist</p>
-                            <h3>Dr. Julian Reed</h3>
-                        </div>
-                    </div>
-                    <div class="doctor-card fade-up-blur">
-                        <div class="doctor-img">
-                            <img src="doctor.png" alt="Dr. Sarah Chen" style="filter: hue-rotate(45deg);">
-                        </div>
-                        <div class="doctor-info">
-                            <p>Orthodontist</p>
-                            <h3>Dr. Sarah Chen</h3>
-                        </div>
-                    </div>
-                    <div class="doctor-card fade-up-blur">
-                        <div class="doctor-img">
-                            <img src="doctor.png" alt="Dr. Marcus Bell" style="filter: hue-rotate(90deg);">
-                        </div>
-                        <div class="doctor-info">
-                            <p>Implant Surgeon</p>
-                            <h3>Dr. Marcus Bell</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section class="testimonials">
-            <div class="container">
-                <div class="services-header">
-                    <span class="section-tag">// Testimonials</span>
-                    <h2 class="fade-up-blur">What Our Patients Say</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="testimonial-card fade-up-blur">
-                        <p class="testimonial-text">"VitaCure completely changed my view of the dentist. The staff is so gentle and the technology they use is incredible. Highly recommend!"</p>
-                        <div class="patient-info">
-                            <div class="patient-avatar"></div>
-                            <div>
-                                <h4 style="font-size: 1rem;">Emily Thompson</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted);">Marketing Executive</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card fade-up-blur">
-                        <p class="testimonial-text">"The implant procedure was surprisingly painless. Dr. Reed and his team are true professionals who care about their patients."</p>
-                        <div class="patient-info">
-                            <div class="patient-avatar"></div>
-                            <div>
-                                <h4 style="font-size: 1rem;">Robert Vance</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted);">Patient since 2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- APPOINTMENT FORM -->
-        <section id="appointment" class="appointment-section">
-            <div class="container">
-                <div class="appointment-card">
-                    <div class="appointment-content">
-                        <span class="section-tag">// Booking</span>
-                        <h2 class="fade-up-blur">Ready to start your journey to a better smile?</h2>
-                        <p class="fade-up-blur" style="margin-top: 20px;">Fill out the form and our coordinator will reach out within 24 hours to confirm your slot.</p>
-                        <div style="margin-top: 40px;" class="fade-up-blur">
-                            <p><strong><i class="fa-solid fa-phone"></i> Emergency Call:</strong></p>
-                            <h3 style="color: var(--primary);">+1 (234) 567-8910</h3>
-                        </div>
-                    </div>
-                    <form class="appointment-form fade-up-blur">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" placeholder="+1 (000) 000-0000" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Preferred Date</label>
-                            <input type="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Service Type</label>
-                            <select>
-                                <option>Checkup</option>
-                                <option>Implants</option>
-                                <option>Cosmetic</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-dark" style="width: 100%; justify-content: center;">Confirm Appointment</button>
+                        </button>
+                        <p class="form-disclaimer">
+                            <i class="fa-solid fa-lock"></i>
+                            Your information is secure and will never be shared.
+                        </p>
                     </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOG -->
-        <section id="blog" class="blog">
-            <div class="container">
-                <div class="services-header">
-                    <span class="section-tag">// Our Blog</span>
-                    <h2 class="fade-up-blur">Health Tips & Dental Articles</h2>
-                </div>
-                <div class="blog-grid">
-                    <div class="blog-card fade-up-blur">
-                        <div class="blog-img">
-                            <img src="interior.png" alt="Blog post 1">
-                        </div>
-                        <div class="blog-content">
-                            <p class="blog-date">April 12, 2026</p>
-                            <h3>The Importance of Regular Scaling</h3>
-                            <a href="#" style="color: var(--primary); font-weight: 600; display: block; margin-top: 15px;">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-up-blur">
-                        <div class="blog-img">
-                            <img src="interior.png" alt="Blog post 2" style="filter: brightness(0.9) contrast(1.1);">
-                        </div>
-                        <div class="blog-content">
-                            <p class="blog-date">April 05, 2026</p>
-                            <h3>Teeth Whitening: Myth vs Reality</h3>
-                            <a href="#" style="color: var(--primary); font-weight: 600; display: block; margin-top: 15px;">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-up-blur">
-                        <div class="blog-img">
-                            <img src="interior.png" alt="Blog post 3" style="filter: sepia(0.2);">
-                        </div>
-                        <div class="blog-content">
-                            <p class="blog-date">March 28, 2026</p>
-                            <h3>Innovations in Dental Technology 2026</h3>
-                            <a href="#" style="color: var(--primary); font-weight: 600; display: block; margin-top: 15px;">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer id="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-info">
-                    <a href="#" class="logo footer-logo" style="color: white">
-                        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-mark">V</div>
                         VitaCure
                     </a>
-                    <p style="color: rgba(255, 255, 255, 0.6);">Leading the way in premium dental care. Your health and smile are our top priorities.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <p class="footer-tagline">Premium cosmetic & general dentistry in the heart of New York. Your smile deserves the best.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook" id="social-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram" id="social-instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn" id="social-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube" id="social-youtube"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-links">
+
+                <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Dr. Reed</a></li>
+                        <li><a href="#testimonials">Patient Reviews</a></li>
+                        <li><a href="#gallery">Before & After</a></li>
+                        <li><a href="#appointment">Book Now</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
+
+                <div class="footer-col">
+                    <h4>Our Services</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Medical Disclaimer</a></li>
+                        <li><a href="#service-implants">Dental Implants</a></li>
+                        <li><a href="#service-veneers">Porcelain Veneers</a></li>
+                        <li><a href="#service-whitening">Teeth Whitening</a></li>
+                        <li><a href="#service-invisalign">Invisalign</a></li>
+                        <li><a href="#service-cosmetic">Smile Makeover</a></li>
+                        <li><a href="#service-general">Preventive Care</a></li>
                     </ul>
                 </div>
-                <div class="footer-links" id="contact">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li style="color: rgba(255, 255, 255, 0.6);"><i class="fa-solid fa-location-dot"></i> 123 Dental Way, New York, NY</li>
-                        <li style="color: rgba(255, 255, 255, 0.6);"><i class="fa-solid fa-phone"></i> +1 (234) 567-8910</li>
-                        <li style="color: rgba(255, 255, 255, 0.6);"><i class="fa-solid fa-envelope"></i> contact@vitacure.com</li>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            123 Dental Way<br>New York, NY 10001
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+12345678910">+1 (234) 567-8910</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:hello@vitacure.com">hello@vitacure.com</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            Mon–Fri: 8am–7pm<br>Sat: 9am–3pm
+                        </li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 VitaCure Dental Clinic. All Rights Reserved.</p>
-                <div style="display: gap: 20px;">
-                    <span>Created with <i class="fa-solid fa-heart" style="color: var(--primary);"></i> by Antigravity AI</span>
+                <p>&copy; 2026 VitaCure Dental. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
                 </div>
             </div>
         </div>
