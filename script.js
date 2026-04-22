@@ -129,14 +129,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- FORM SUBMISSION --- */
     const form = document.getElementById('booking-form');
+    // Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzASF-uLbC-_q15koY1jiGxJAeVes5agOp6e3oUzhx6rOdbUJBtTUYX5Pb2ttTjgHRU/exec';
+
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"] span');
             const originalText = btn.textContent;
-            btn.textContent = 'Appointment Confirmed ✓';
-            form.reset();
-            setTimeout(() => { btn.textContent = originalText; }, 3000);
+            btn.textContent = 'Sending...';
+
+            // Collect data from inputs
+            const data = new FormData();
+            data.append('Name', document.getElementById('patient-name').value);
+            data.append('Phone', document.getElementById('patient-phone').value);
+            data.append('Service', document.getElementById('patient-service').value);
+            data.append('Date', document.getElementById('patient-date').value);
+            data.append('Message', document.getElementById('patient-message').value);
+
+            // Send to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: data })
+                .then(response => {
+                    btn.textContent = 'Appointment Confirmed ✓';
+                    form.reset();
+                    setTimeout(() => { btn.textContent = originalText; }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    btn.textContent = 'Error! Try again.';
+                    setTimeout(() => { btn.textContent = originalText; }, 3000);
+                });
         });
     }
 
