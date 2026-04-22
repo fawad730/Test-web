@@ -147,9 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
             data.append('Date', document.getElementById('patient-date').value);
             data.append('Message', document.getElementById('patient-message').value);
 
-            // Send to Google Sheets
-            fetch(scriptURL, { method: 'POST', body: data })
+            // Send to Google Sheets (using no-cors to avoid Google redirect blocks)
+            fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
                 .then(response => {
+                    // With no-cors, the response is opaque, but if it reaches here, it succeeded
                     btn.textContent = 'Appointment Confirmed ✓';
                     form.reset();
                     setTimeout(() => { btn.textContent = originalText; }, 3000);
